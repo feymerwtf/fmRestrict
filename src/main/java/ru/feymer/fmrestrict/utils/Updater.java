@@ -77,7 +77,7 @@ public class Updater {
                 }
             }
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException error) {
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&fПроизошла ошибка при проверке наличия обновлений: &6" + error.getMessage()));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&fПроизошла ошибка при проверке наличия обновлений: &c" + error.getMessage()));
             return false;
         } catch (Exception error) {
             Bukkit.getConsoleSender().sendMessage(Hex.color("&fНе могу проверить наличие обновлений!"));
@@ -90,17 +90,17 @@ public class Updater {
         if (this.checkForUpdates()) {
             String newVersion = this.latestVersion;
 
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&a"));
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&a» &fНайдена новая версия плагина: &av" + newVersion));
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&a» &fСкачайте ее по ссылке: &a" + resourceURL));
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&a"));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&c"));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&c» &fНайдена новая версия плагина: &cv" + newVersion));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&c» &fСкачайте ее по ссылке: &c" + resourceURL));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&c"));
 
         } else {
 
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&a"));
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&a» &fОбновления не найдены!"));
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&a» &fВы используете последнюю версию плагина - &av" + latestVersion));
-            Bukkit.getConsoleSender().sendMessage(Hex.color("&a"));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&c"));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&c» &fОбновления не найдены!"));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&c» &fВы используете последнюю версию плагина - &cv" + latestVersion));
+            Bukkit.getConsoleSender().sendMessage(Hex.color("&c"));
 
         }
 

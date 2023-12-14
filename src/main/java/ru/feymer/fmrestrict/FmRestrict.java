@@ -7,6 +7,7 @@ import ru.feymer.fmrestrict.commands.FmRestrictCommand;
 import ru.feymer.fmrestrict.listeners.EventListener;
 import ru.feymer.fmrestrict.utils.Config;
 import ru.feymer.fmrestrict.utils.Hex;
+import ru.feymer.fmrestrict.utils.Updater;
 
 public final class FmRestrict extends JavaPlugin {
 
@@ -22,6 +23,8 @@ public final class FmRestrict extends JavaPlugin {
         Config.loadYamlFile(this);
         this.getCommand("fmrestrict").setExecutor(new FmRestrictCommand());
         Bukkit.getPluginManager().registerEvents(new EventListener(), this);
+        Updater updater = new Updater(this);
+        updater.start();
 
     }
 
