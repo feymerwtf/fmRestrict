@@ -1,0 +1,9 @@
+name: fmRestrict
+version: '${version}'
+main: ru.feymer.fmrestrict.FmRestrict
+api-version: '1.16'
+depend: [Essentials]
+commands:
+  fmrestrict:
+    aliases:
+      - fmr
