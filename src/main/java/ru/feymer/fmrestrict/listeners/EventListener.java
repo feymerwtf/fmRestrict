@@ -159,7 +159,7 @@ public class EventListener implements Listener {
     }
 
     @EventHandler
-    public void interactEvent(PlayerInteractEvent event) {
+    public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Block clickedBlock = event.getClickedBlock();
         if (clickedBlock != null && clickedBlock.getType() == Material.CHEST) {
@@ -177,8 +177,20 @@ public class EventListener implements Listener {
         if (clickedBlock != null && clickedBlock.getType() == Material.SHULKER_BOX) {
             if (this.cancelShulkerOpen(player)) {
                 event.setCancelled(true);
+                return;
             }
         }
+        if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.END_CRYSTAL) {
+            if (this.cancelCrystalInteract(player)) {
+                event.setCancelled(true);
+            }
+        }
+        if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BOW) {
+            if (this.cancelBowInteract(player)) {
+                event.setCancelled(true);
+            }
+        }
+
     }
 
     public boolean cancelChestOpen(Player player) {
@@ -247,6 +259,54 @@ public class EventListener implements Listener {
             return true;
         } else if (!player.hasPermission("fmrestrict.bypass.shulker-open.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.shulker-open")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.shulker-open"));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean cancelCrystalInteract(Player player) {
+        long currentTime = System.currentTimeMillis();
+        if (this.lastMessageTimeMap.containsKey(player)) {
+            long lastMessageTime = (Long)this.lastMessageTimeMap.get(player);
+            if (currentTime - lastMessageTime < Utils.getLong("settings.cooldown-message") * 1000) {
+                return true;
+            }
+        }
+
+        User user = this.essentialsPlugin.getUser(player);
+        if (!player.hasPermission("fmrestrict.bypass.crystal-interact.flight-mode") && user.getBase().getAllowFlight() && Utils.getBoolean("settings.flight-mode.crystal-interact")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.flight-mode.crystal-interact"));
+            return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.crystal-interact.god-mode") && user.isGodModeEnabled() && Utils.getBoolean("settings.god-mode.crystal-interact")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.god-mode.crystal-interact"));
+            return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.crystal-interact.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.crystal-interact")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.god-mode.crystal-interact"));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean cancelBowInteract(Player player) {
+        long currentTime = System.currentTimeMillis();
+        if (this.lastMessageTimeMap.containsKey(player)) {
+            long lastMessageTime = (Long)this.lastMessageTimeMap.get(player);
+            if (currentTime - lastMessageTime < Utils.getLong("settings.cooldown-message") * 1000) {
+                return true;
+            }
+        }
+
+        User user = this.essentialsPlugin.getUser(player);
+        if (!player.hasPermission("fmrestrict.bypass.bow-interact.flight-mode") && user.getBase().getAllowFlight() && Utils.getBoolean("settings.flight-mode.bow-interact")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.flight-mode.bow-interact"));
+            return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.bow-interact.god-mode") && user.isGodModeEnabled() && Utils.getBoolean("settings.god-mode.bow-interact")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.god-mode.bow-interact"));
+            return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.bow-interact.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.bow-interact")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.god-mode.bow-interact"));
             return true;
         } else {
             return false;
