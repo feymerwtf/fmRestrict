@@ -180,12 +180,13 @@ public class EventListener implements Listener {
                 return;
             }
         }
-        if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.END_CRYSTAL) {
+        if (player.getInventory().getItemInMainHand().getType() == Material.END_CRYSTAL) {
             if (this.cancelCrystalInteract(player)) {
                 event.setCancelled(true);
+                return;
             }
         }
-        if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BOW) {
+        if (player.getInventory().getItemInMainHand().getType() == Material.BOW) {
             if (this.cancelBowInteract(player)) {
                 event.setCancelled(true);
             }
