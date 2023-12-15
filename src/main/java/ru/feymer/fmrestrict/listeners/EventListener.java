@@ -51,6 +51,9 @@ public class EventListener implements Listener {
         } else if (!player.hasPermission("fmrestrict.bypass.pickup-items.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.pickup-items")) {
             this.sendDelayedMessage(player, Utils.getString("messages.vanish.pickup-items"));
             return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.pickup-item.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.pickup-items")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.pickup-items"));
+            return true;
         } else {
             return false;
         }
@@ -83,6 +86,9 @@ public class EventListener implements Listener {
         } else if (!player.hasPermission("fmrestrict.bypass.block-place.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.block-place")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.block-place"));
             return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.block-place.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.block-place")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.block-place"));
+            return true;
         } else {
             return false;
         }
@@ -114,6 +120,9 @@ public class EventListener implements Listener {
             return true;
         } else if (!player.hasPermission("fmrestrict.bypass.block-break.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.block-break")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.block-break"));
+            return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.block-break.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.block-break")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.block-break"));
             return true;
         } else {
             return false;
@@ -152,6 +161,9 @@ public class EventListener implements Listener {
             return true;
         } else if (!player.hasPermission("fmrestrict.bypass.block-commands.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.block-commands")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.block-commands"));
+            return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.block-commands.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.block-commands")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.block-commands"));
             return true;
         } else {
             return false;
@@ -213,6 +225,9 @@ public class EventListener implements Listener {
         } else if (!player.hasPermission("fmrestrict.bypass.chest-open.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.chest-open")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.chest-open"));
             return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.chest-open.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.chest-open")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.chest-open"));
+            return true;
         } else {
             return false;
         }
@@ -236,6 +251,9 @@ public class EventListener implements Listener {
             return true;
         } else if (!player.hasPermission("fmrestrict.bypass.enderchest-open.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.enderchest-open")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.enderchest-open"));
+            return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.enderchest-open.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.enderchest-open")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.enderchest-open"));
             return true;
         } else {
             return false;
@@ -261,6 +279,9 @@ public class EventListener implements Listener {
         } else if (!player.hasPermission("fmrestrict.bypass.shulker-open.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.shulker-open")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.shulker-open"));
             return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.shulker-open.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.shulker-open")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.shulker-open"));
+            return true;
         } else {
             return false;
         }
@@ -285,6 +306,9 @@ public class EventListener implements Listener {
         } else if (!player.hasPermission("fmrestrict.bypass.crystal-interact.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.crystal-interact")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.crystal-interact"));
             return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.crystal-interact.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.crystal-interact")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.crystal-interact"));
+            return true;
         } else {
             return false;
         }
@@ -308,6 +332,9 @@ public class EventListener implements Listener {
             return true;
         } else if (!player.hasPermission("fmrestrict.bypass.bow-interact.vanish") && user.isVanished() && Utils.getBoolean("settings.vanish.bow-interact")) {
             this.sendDelayedMessage(player, Utils.getString("messages.god-mode.bow-interact"));
+            return true;
+        } else if (!player.hasPermission("fmrestrict.bypass.bow-interact.walk-speed") && player.getWalkSpeed() > 0.5F && Utils.getBoolean("settings.walk-speed.bow-interact")) {
+            this.sendDelayedMessage(player, Utils.getString("messages.walk-speed.bow-interact"));
             return true;
         } else {
             return false;
