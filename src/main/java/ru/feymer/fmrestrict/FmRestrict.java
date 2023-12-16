@@ -1,6 +1,5 @@
 package ru.feymer.fmrestrict;
 
-import com.earth2me.essentials.Essentials;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.feymer.fmrestrict.commands.FmRestrictCommand;
